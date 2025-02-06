@@ -1,4 +1,3 @@
-
 function loadEvents() {
     const events = JSON.parse(localStorage.getItem('events')) || [];
     const eventList = document.getElementById('event-list');
@@ -309,5 +308,120 @@ function downloadTicket() {
     }, 100); 
 }
 
+// Initialize default events if none exist
+function initializeDefaultEvents() {
+    const events = JSON.parse(localStorage.getItem('events')) || [];
+    
+    if (events.length === 0) {
+        const defaultEvents = [
+            {
+                id: 'evt1',
+                name: 'Annual Tech Symposium',
+                description: 'A day-long technical symposium featuring workshops, coding competitions, and tech talks.',
+                date: '2025-01-15',
+                time: '09:00',
+                venue: 'Main Auditorium',
+                image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800',
+                capacity: 200
+            },
+            {
+                id: 'evt2',
+                name: 'Cultural Fest 2025',
+                description: 'Annual cultural festival with music, dance, and theatrical performances.',
+                date: '2025-02-20',
+                time: '10:00',
+                venue: 'College Ground',
+                image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800',
+                capacity: 500
+            },
+            {
+                id: 'evt3',
+                name: 'Winter Sports Meet',
+                description: 'Inter-college sports competition featuring various indoor and outdoor games.',
+                date: '2025-10-05',
+                time: '08:00',
+                venue: 'Sports Complex',
+                image: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=800',
+                capacity: 300
+            },
+            {
+                id: 'evt4',
+                name: 'Career Fair 2025',
+                description: 'Connect with top companies and explore career opportunities.',
+                date: '2025-03-10',
+                time: '11:00',
+                venue: 'Conference Center',
+                image: 'https://images.unsplash.com/photo-1560523159-4a9692d222ef?auto=format&fit=crop&w=800',
+                capacity: 400
+            },
+            {
+                id: 'evt5',
+                name: 'New Year Celebration',
+                description: 'Welcome 2025 with music, food, and festivities.',
+                date: '2025-01-01',
+                time: '20:00',
+                venue: 'College Ground',
+                image: 'https://images.unsplash.com/photo-1467810563316-b5476525c0f9?auto=format&fit=crop&w=800',
+                capacity: 1000
+            },
+            {
+                id: 'evt6',
+                name: 'AI & Machine Learning Workshop',
+                description: 'Hands-on workshop on artificial intelligence and machine learning fundamentals.',
+                date: '2025-02-28',
+                time: '14:00',
+                venue: 'Computer Lab Complex',
+                image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800',
+                capacity: 100
+            },
+            {
+                id: 'evt7',
+                name: 'Alumni Meet 2025',
+                description: 'Annual gathering of college alumni sharing experiences and networking.',
+                date: '2025-01-25',
+                time: '16:00',
+                venue: 'College Banquet Hall',
+                image: 'https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=800',
+                capacity: 250
+            },
+            {
+                id: 'evt8',
+                name: 'Environmental Awareness Drive',
+                description: 'Campus-wide initiative for environmental conservation and sustainability.',
+                date: '2025-03-22',
+                time: '09:30',
+                venue: 'Botanical Garden',
+                image: 'https://images.unsplash.com/photo-1492496913980-501348b61469?auto=format&fit=crop&w=800',
+                capacity: 150
+            },
+            {
+                id: 'evt9',
+                name: 'Entrepreneurship Summit',
+                description: 'Meet successful entrepreneurs and learn about startup opportunities.',
+                date: '2025-04-05',
+                time: '10:00',
+                venue: 'Business School Auditorium',
+                image: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=800',
+                capacity: 300
+            },
+            {
+                id: 'evt10',
+                name: 'Spring Music Festival',
+                description: 'A day of live music performances featuring college bands and professional artists.',
+                date: '2025-03-15',
+                time: '17:00',
+                venue: 'Open Air Theater',
+                image: 'https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=800',
+                capacity: 600
+            }
+        ];
+        
+        localStorage.setItem('events', JSON.stringify(defaultEvents));
+    }
+}
 
-document.addEventListener('DOMContentLoaded', loadEvents);
+// Call initializeDefaultEvents when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    initializeDefaultEvents();
+    loadEvents();
+});
